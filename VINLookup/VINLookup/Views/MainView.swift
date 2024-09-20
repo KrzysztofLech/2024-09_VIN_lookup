@@ -4,11 +4,41 @@
 import SwiftUI
 
 struct MainView: View {
-    var body: some View {
-        Text("Hello, World!")
-    }
+
+	var body: some View {
+		NavigationView {
+			tabView
+				.navigationBarTitleDisplayMode(.inline)
+				.navigationTitle(Strings.mainViewTitle)
+		}
+	}
+
+	private var tabView: some View {
+		TabView {
+			Group {
+				SearchView()
+					.tabItem {
+						Image(systemName: "magnifyingglass")
+						Text(Strings.TabView.searchPageTitle)
+					}
+
+				RecentView()
+					.tabItem {
+						Image(systemName: "list.bullet")
+						Text(Strings.TabView.recentPageTitle)
+					}
+			}
+			.toolbarBackground(.visible, for: .navigationBar)
+			.toolbarBackground(.visible, for: .tabBar)
+
+			.toolbarBackground(Color.theme1, for: .navigationBar)
+			.toolbarBackground(Color.theme1, for: .tabBar)
+
+			.toolbarColorScheme(.dark, for: .navigationBar)
+		}
+	}
 }
 
 #Preview {
-    MainView()
+	MainView()
 }
