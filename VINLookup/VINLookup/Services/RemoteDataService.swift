@@ -10,7 +10,7 @@ protocol URLSessionProtocol {
 extension URLSession: URLSessionProtocol {}
 
 protocol RemoteDataServiceProtocol {
-	func getVIN(_ vinText: String) async throws -> VINData
+	func fetchVehicleData(forVIN vinNumber: String) async throws -> VINData
 }
 
 final class RemoteDataService: RemoteDataServiceProtocol {
@@ -22,8 +22,11 @@ final class RemoteDataService: RemoteDataServiceProtocol {
 		self.session = session
 	}
 
-	func getVIN(_ vinText: String) async throws -> VINData {
-		guard let urlRequest = getUrlRequest(vinText: vinText) else {
+	func fetchVehicleData(forVIN vinNumber: String) async throws -> VINData {
+		guard
+			let encodedString = vinNumber.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
+			let urlRequest = getUrlRequest(vinNumber: encodedString)
+		else {
 			throw NetworkingError.invalidRequest
 		}
 
@@ -45,10 +48,10 @@ final class RemoteDataService: RemoteDataServiceProtocol {
 		}
 	}
 
-	private func getUrlRequest(vinText: String) -> URLRequest? {
+	private func getUrlRequest(vinNumber: String) -> URLRequest? {
 		var urlComponents = URLComponents(string: apiUrlString)
 		urlComponents?.queryItems = [
-			URLQueryItem(name: "vin", value: vinText)
+			URLQueryItem(name: "vin", value: vinNumber)
 		]
 
 		guard let url = urlComponents?.url else { return nil }

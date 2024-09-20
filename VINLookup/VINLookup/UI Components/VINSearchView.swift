@@ -6,7 +6,7 @@ import SwiftUI
 struct VINSearchView: View {
 	@Binding var vinNumber: String
 	@Binding var isDataDownloading: Bool
-	let searchAction: (String) -> Void
+	let searchAction: () -> Void
 
 	var body: some View {
 		VStack(spacing: 0) {
@@ -63,9 +63,7 @@ struct VINSearchView: View {
 
 	private var searchButton: some View {
 		Button(
-			action: {
-				searchAction(vinNumber)
-			},
+			action: searchAction,
 			label: {
 				Text(Strings.SearchComponent.buttonTitle)
 					.foregroundStyle(Color.theme2)

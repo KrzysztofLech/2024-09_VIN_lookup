@@ -11,9 +11,7 @@ struct SearchView: View {
 			VINSearchView(
 				vinNumber: $viewModel.vinNumber,
 				isDataDownloading: $viewModel.isDataDownloading,
-				searchAction: { vinNumber in
-					viewModel.searchVIN(vinNumber)
-				}
+				searchAction: viewModel.searchData
 			)
 			.padding(.top, 100)
 			.padding(.horizontal, 32)

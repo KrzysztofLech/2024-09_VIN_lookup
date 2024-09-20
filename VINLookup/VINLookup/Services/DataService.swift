@@ -4,7 +4,7 @@
 import Foundation
 
 protocol DataServiceProtocol {
-	func searchVIN(vinText: String) async throws -> VINData
+	func getVehicleData(forVIN vinNumber: String) async throws -> VINData
 }
 
 final class DataService: DataServiceProtocol {
@@ -14,8 +14,7 @@ final class DataService: DataServiceProtocol {
 		self.remoteDataService = remoteDataService
 	}
 
-	func searchVIN(vinText: String) async throws -> VINData {
-		let encodedString = vinText.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
-		return try await remoteDataService.getVIN(encodedString)
+	func getVehicleData(forVIN vinNumber: String) async throws -> VINData {
+		try await remoteDataService.fetchVehicleData(forVIN: vinNumber)
 	}
 }
