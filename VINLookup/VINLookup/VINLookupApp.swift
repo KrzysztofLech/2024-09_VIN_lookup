@@ -5,9 +5,14 @@ import SwiftUI
 
 @main
 struct VINLookupApp: App {
+
     var body: some Scene {
         WindowGroup {
-            MainView()
+			let remoteDataService = RemoteDataService()
+			let dataService = DataService(remoteDataService: remoteDataService)
+			let mainViewModel = MainViewModel(dataService: dataService)
+
+            MainView(viewModel: mainViewModel)
 				.preferredColorScheme(.light)
         }
     }

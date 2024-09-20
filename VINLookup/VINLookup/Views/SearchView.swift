@@ -4,16 +4,30 @@
 import SwiftUI
 
 struct SearchView: View {
+	@ObservedObject var viewModel: MainViewModel
+
     var body: some View {
 		ScrollView {
-			VINSearchView()
-				.padding(.top, 100)
-				.padding(.horizontal, 32)
+			VINSearchView(
+				vinNumber: $viewModel.vinNumber,
+				isDataDownloading: $viewModel.isDataDownloading,
+				searchAction: { vinNumber in
+					viewModel.searchVIN(vinNumber)
+				}
+			)
+			.padding(.top, 100)
+			.padding(.horizontal, 32)
 		}
 		.scrollDisabled(true)
     }
 }
 
 #Preview {
-    SearchView()
+	SearchView(
+		viewModel: MainViewModel(
+			dataService: DataService(
+				remoteDataService: RemoteDataService()
+			)
+		)
+	)
 }

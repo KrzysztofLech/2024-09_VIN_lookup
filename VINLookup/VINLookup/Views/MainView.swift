@@ -5,6 +5,8 @@ import SwiftUI
 
 struct MainView: View {
 
+	@ObservedObject var viewModel: MainViewModel
+
 	var body: some View {
 		NavigationView {
 			tabView
@@ -16,7 +18,7 @@ struct MainView: View {
 	private var tabView: some View {
 		TabView {
 			Group {
-				SearchView()
+				SearchView(viewModel: viewModel)
 					.tabItem {
 						Image(systemName: "magnifyingglass")
 						Text(Strings.TabView.searchPageTitle)
@@ -40,5 +42,11 @@ struct MainView: View {
 }
 
 #Preview {
-	MainView()
+	MainView(
+		viewModel: MainViewModel(
+			dataService: DataService(
+				remoteDataService: RemoteDataService()
+			)
+		)
+	)
 }
