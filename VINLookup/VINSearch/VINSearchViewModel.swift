@@ -6,6 +6,7 @@ import Foundation
 final class VINSearchViewModel: ObservableObject {
 	@Published var vinNumber: String = "JH4KA7561PC008269" // ""
 	@Published var isDataDownloading: Bool = false
+	@Published var showNetworkAlert: Bool = false
 	@Published var vinData: VINData?
 
 	private let remoteDataService: RemoteDataServiceProtocol
@@ -30,6 +31,7 @@ final class VINSearchViewModel: ObservableObject {
 				if let error = error as? NetworkingError {
 					Logger.log(error: error.errorDescription)
 				}
+				showNetworkAlert = true
 			}
 		}
 	}

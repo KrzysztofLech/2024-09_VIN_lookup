@@ -19,6 +19,13 @@ public struct VINSearchView: View {
 			.padding(.horizontal, 32)
 		}
 		.scrollDisabled(true)
+
+		.alert(isPresented: $viewModel.showNetworkAlert) {
+			Alert(title: Text(VINString.APIproblem.title),
+				  message: Text(VINString.APIproblem.message),
+				  dismissButton: .default(Text(VINString.APIproblem.buttonTitle))
+			)
+		}
     }
 }
 
