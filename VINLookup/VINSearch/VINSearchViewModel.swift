@@ -17,6 +17,8 @@ final class VINSearchViewModel: ObservableObject {
 
 	@MainActor
 	func searchData() {
+		vinData = nil
+
 		Task {
 			do {
 				isDataDownloading = true
@@ -34,5 +36,10 @@ final class VINSearchViewModel: ObservableObject {
 				showNetworkAlert = true
 			}
 		}
+	}
+
+	func handleSelectedNumber(number: String) {
+		vinData = nil
+		vinNumber = number
 	}
 }

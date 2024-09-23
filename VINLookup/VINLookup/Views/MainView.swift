@@ -17,19 +17,25 @@ struct MainView: View {
 	}
 
 	private var tabView: some View {
-		TabView {
+		TabView(selection: $viewModel.selectedTabIndex) {
 			Group {
-				VINSearchView()
-					.tabItem {
-						Image(systemName: "magnifyingglass")
-						Text(AppString.TabView.searchPageTitle)
-					}
+				VINSearchView(selectedNumber: $viewModel.vinNumber, searchCompletion: { vinNumber in
+					viewModel.handle(vinNumber: vinNumber)
+				})
+				.tabItem {
+					Image(systemName: "magnifyingglass")
+					Text(AppString.TabView.searchPageTitle)
+				}
+				.tag(0)
 
-				RecentView()
-					.tabItem {
-						Image(systemName: "list.bullet")
-						Text(AppString.TabView.recentPageTitle)
-					}
+				RecentView(vinNumbers: $viewModel.vinNumbers, onSelectAction: { vinNumber in
+					viewModel.onSelect(number: vinNumber)
+				})
+				.tabItem {
+					Image(systemName: "list.bullet")
+					Text(AppString.TabView.recentPageTitle)
+				}
+				.tag(1)
 			}
 			.toolbarBackground(.visible, for: .navigationBar)
 			.toolbarBackground(.visible, for: .tabBar)

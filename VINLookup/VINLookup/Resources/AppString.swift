@@ -10,4 +10,6 @@ enum AppString {
 	}
 
 	static let mainViewTitle = "VIN Lookup"
+
+	static let noDataText = "No recent VIN numbers"
 }

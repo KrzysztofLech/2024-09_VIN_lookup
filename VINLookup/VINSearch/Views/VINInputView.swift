@@ -19,7 +19,6 @@ struct VINInputView: View {
 					searchButton
 				}
 			}
-
 		}
 		.background {
 			VINColor.theme1
@@ -79,5 +78,6 @@ struct VINInputView: View {
 }
 
 #Preview {
-	VINSearchView()
+	VINSearchView(selectedNumber: Binding.constant(""))
 }
+

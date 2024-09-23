@@ -4,16 +4,26 @@
 import SwiftUI
 
 public struct VINSearchView: View {
-	@StateObject var viewModel = VINSearchViewModel()
 
-	public init() {}
+	@StateObject private var viewModel = VINSearchViewModel()
+
+	@Binding private var selectedNumber: String
+	private let searchCompletion: ((String) -> Void)?
+
+	public init(selectedNumber: Binding<String>, searchCompletion: ((String) -> Void)? = nil) {
+		self._selectedNumber = selectedNumber
+		self.searchCompletion = searchCompletion
+	}
 
 	public var body: some View {
 		VStack(spacing: 32) {
 			VINInputView(
 				vinNumber: $viewModel.vinNumber,
 				isDataDownloading: $viewModel.isDataDownloading,
-				searchAction: viewModel.searchData
+				searchAction: {
+					viewModel.searchData()
+					searchCompletion?(viewModel.vinNumber)
+				}
 			)
 
 			if let vinData = viewModel.vinData {
@@ -33,9 +43,13 @@ public struct VINSearchView: View {
 				  dismissButton: .default(Text(VINString.APIproblem.buttonTitle))
 			)
 		}
+
+		.onChange(of: selectedNumber) { _, newValue in
+			viewModel.handleSelectedNumber(number: newValue)
+		}
 	}
 }
 
 #Preview {
-	VINSearchView()
+	VINSearchView(selectedNumber: Binding.constant(""))
 }
