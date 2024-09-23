@@ -14,4 +14,9 @@ enum VINString {
 		static let message = "Sorry, there was a problem accessing the data"
 		static let buttonTitle = "OK"
 	}
+
+	enum Data {
+		static let premiumDataPrefix = "Only"
+		static let premiumTitle = "PREMIUM"
+	}
 }

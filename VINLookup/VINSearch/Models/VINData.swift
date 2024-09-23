@@ -20,7 +20,7 @@ extension VINData {
 	static let exampleVIN = VINData(
 		vin: "JH4KA7561PC008269",
 		country: "Japan",
-		manufacturer: "Acura",
+		manufacturer: "Only",
 		model: "Legend",
 		class: "Sedan/Saloon",
 		region: "Asia",

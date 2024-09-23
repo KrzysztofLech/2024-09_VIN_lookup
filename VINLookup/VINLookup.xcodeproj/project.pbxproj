@@ -27,6 +27,7 @@
 		6BE6F9082CA15AB0001C53DA /* RemoteDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B62935B2C9D611900D82820 /* RemoteDataService.swift */; };
 		6BE6F9092CA15AD7001C53DA /* VINData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B62935D2C9D618D00D82820 /* VINData.swift */; };
 		6BE6F90A2CA15ADB001C53DA /* NetworkingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B62935F2C9D65BC00D82820 /* NetworkingError.swift */; };
+		6BE6F90C2CA16C5C001C53DA /* VINDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE6F90B2CA16C5C001C53DA /* VINDataView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +75,7 @@
 		6BE0DB772C9C52740021E2E5 /* AppString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppString.swift; sourceTree = "<group>"; };
 		6BE0DB7B2C9C63FB0021E2E5 /* RecentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentView.swift; sourceTree = "<group>"; };
 		6BE0DB7D2C9C67870021E2E5 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		6BE6F90B2CA16C5C001C53DA /* VINDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VINDataView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				6B7DFC652CA151620072360C /* VINInputView.swift */,
+				6BE6F90B2CA16C5C001C53DA /* VINDataView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -333,6 +336,7 @@
 			files = (
 				6B7DFC632CA13B7A0072360C /* VINSearchViewModel.swift in Sources */,
 				6BE6F9062CA15A77001C53DA /* Logger.swift in Sources */,
+				6BE6F90C2CA16C5C001C53DA /* VINDataView.swift in Sources */,
 				6B7DFC6B2CA155FB0072360C /* VINString.swift in Sources */,
 				6B7DFC662CA151620072360C /* VINInputView.swift in Sources */,
 				6BE6F90A2CA15ADB001C53DA /* NetworkingError.swift in Sources */,

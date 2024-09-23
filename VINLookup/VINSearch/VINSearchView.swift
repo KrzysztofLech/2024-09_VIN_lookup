@@ -8,17 +8,24 @@ public struct VINSearchView: View {
 
 	public init() {}
 
-    public var body: some View {
-		ScrollView {
+	public var body: some View {
+		VStack(spacing: 32) {
 			VINInputView(
 				vinNumber: $viewModel.vinNumber,
 				isDataDownloading: $viewModel.isDataDownloading,
 				searchAction: viewModel.searchData
 			)
-			.padding(.top, 100)
-			.padding(.horizontal, 32)
+
+			if let vinData = viewModel.vinData {
+				VINDataView(data: vinData)
+			}
+
+			Spacer(minLength: 0)
 		}
-		.scrollDisabled(true)
+		.padding(.top, 32)
+		.padding(.horizontal, 32)
+
+		.ignoresSafeArea(.keyboard, edges: .bottom)
 
 		.alert(isPresented: $viewModel.showNetworkAlert) {
 			Alert(title: Text(VINString.APIproblem.title),
@@ -26,9 +33,9 @@ public struct VINSearchView: View {
 				  dismissButton: .default(Text(VINString.APIproblem.buttonTitle))
 			)
 		}
-    }
+	}
 }
 
 #Preview {
-    VINSearchView()
+	VINSearchView()
 }
