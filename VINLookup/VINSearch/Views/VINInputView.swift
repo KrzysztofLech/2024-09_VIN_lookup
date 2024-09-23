@@ -1,9 +1,9 @@
-//  VINSearchView.swift
-//  Created by Krzysztof Lech on 19/09/2024.
+//  VINInputView.swift
+//  Created by Krzysztof Lech on 23/09/2024.
 
 import SwiftUI
 
-struct VINSearchView: View {
+struct VINInputView: View {
 	@Binding var vinNumber: String
 	@Binding var isDataDownloading: Bool
 	let searchAction: () -> Void
@@ -22,7 +22,7 @@ struct VINSearchView: View {
 
 		}
 		.background {
-			Color.theme1
+			VINColor.theme1
 				.cornerRadius(12)
 				.shadow(color: .black.opacity(0.7), radius: 10, x: 0, y: 0)
 		}
@@ -32,15 +32,15 @@ struct VINSearchView: View {
 		TextField(
 			"",
 			text: $vinNumber,
-			prompt: Text(Strings.SearchComponent.prompt)
+			prompt: Text(VINString.Input.prompt)
 		)
 		.multilineTextAlignment(.center)
 		.font(.system(size: 24))
-		.foregroundColor(.theme2)
-		.tint(.theme2)
+		.foregroundColor(VINColor.theme2)
+		.tint(VINColor.theme2)
 
 		.frame(height: 48)
-		.background(.light)
+		.background(VINColor.light)
 		.cornerRadius(8)
 		.padding(32)
 
@@ -55,7 +55,7 @@ struct VINSearchView: View {
 
 	private var progressView: some View {
 		ProgressView()
-			.tint(.light)
+			.tint(VINColor.light)
 			.scaleEffect(1.5)
 			.frame(height: 50)
 			.padding(.bottom, 32)
@@ -65,12 +65,12 @@ struct VINSearchView: View {
 		Button(
 			action: searchAction,
 			label: {
-				Text(Strings.SearchComponent.buttonTitle)
-					.foregroundStyle(Color.theme2)
+				Text(VINString.Input.buttonTitle)
+					.foregroundStyle(VINColor.theme2)
 					.font(.system(size: 20, weight: .semibold))
 					.padding(.horizontal, 32)
 					.frame(height: 50)
-					.background(Color.theme3)
+					.background(VINColor.theme3)
 			}
 		)
 		.cornerRadius(8)
@@ -79,11 +79,5 @@ struct VINSearchView: View {
 }
 
 #Preview {
-	SearchView(
-		viewModel: MainViewModel(
-			dataService: DataService(
-				remoteDataService: RemoteDataService()
-			)
-		)
-	)
+	VINSearchView()
 }

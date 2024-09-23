@@ -2,6 +2,7 @@
 //  Created by Krzysztof Lech on 19/09/2024.
 
 import SwiftUI
+import VINSearch
 
 struct MainView: View {
 
@@ -11,23 +12,23 @@ struct MainView: View {
 		NavigationView {
 			tabView
 				.navigationBarTitleDisplayMode(.inline)
-				.navigationTitle(Strings.mainViewTitle)
+				.navigationTitle(AppString.mainViewTitle)
 		}
 	}
 
 	private var tabView: some View {
 		TabView {
 			Group {
-				SearchView(viewModel: viewModel)
+				VINSearchView()
 					.tabItem {
 						Image(systemName: "magnifyingglass")
-						Text(Strings.TabView.searchPageTitle)
+						Text(AppString.TabView.searchPageTitle)
 					}
 
 				RecentView()
 					.tabItem {
 						Image(systemName: "list.bullet")
-						Text(Strings.TabView.recentPageTitle)
+						Text(AppString.TabView.recentPageTitle)
 					}
 			}
 			.toolbarBackground(.visible, for: .navigationBar)
@@ -42,11 +43,5 @@ struct MainView: View {
 }
 
 #Preview {
-	MainView(
-		viewModel: MainViewModel(
-			dataService: DataService(
-				remoteDataService: RemoteDataService()
-			)
-		)
-	)
+	MainView(viewModel: MainViewModel())
 }

@@ -8,10 +8,7 @@ struct VINLookupApp: App {
 
     var body: some Scene {
         WindowGroup {
-			let remoteDataService = RemoteDataService()
-			let dataService = DataService(remoteDataService: remoteDataService)
-			let mainViewModel = MainViewModel(dataService: dataService)
-
+			let mainViewModel = MainViewModel()
             MainView(viewModel: mainViewModel)
 				.preferredColorScheme(.light)
         }
