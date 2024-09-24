@@ -2,6 +2,7 @@
 //  Created by Krzysztof Lech on 20/09/2024.
 
 import Foundation
+import Utils
 
 protocol URLSessionProtocol {
 	func data(for request: URLRequest) async throws -> (Data, URLResponse)

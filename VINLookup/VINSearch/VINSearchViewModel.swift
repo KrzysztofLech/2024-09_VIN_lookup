@@ -2,6 +2,7 @@
 //  Created by Krzysztof Lech on 23/09/2024.
 
 import Foundation
+import Utils
 
 final class VINSearchViewModel: ObservableObject {
 	@Published var vinNumber: String = "" {

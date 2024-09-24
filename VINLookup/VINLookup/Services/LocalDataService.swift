@@ -2,6 +2,7 @@
 //  Created by Krzysztof Lech on 24/09/2024.
 
 import Foundation
+import Utils
 
 protocol LocalDataServiceProtocol {
 	var vinNumbers: [String] { get set }

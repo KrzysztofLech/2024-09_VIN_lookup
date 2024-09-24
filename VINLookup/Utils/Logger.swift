@@ -3,9 +3,9 @@
 
 import Foundation
 
-struct Logger {
+public struct Logger {
 
-	static func log(info: String) {
+	public static func log(info: String) {
 		#if !DEBUG
 			return
 		#endif
@@ -14,7 +14,7 @@ struct Logger {
 		print(prefix, info)
 	}
 
-	static func log(okText: String) {
+	public static func log(okText: String) {
 		#if !DEBUG
 			return
 		#endif
@@ -23,7 +23,7 @@ struct Logger {
 		print(prefix, okText)
 	}
 
-	static func log(error: String) {
+	public static func log(error: String) {
 		#if !DEBUG
 			return
 		#endif
