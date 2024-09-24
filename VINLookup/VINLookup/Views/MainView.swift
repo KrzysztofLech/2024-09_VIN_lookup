@@ -45,6 +45,7 @@ struct MainView: View {
 
 			.toolbarColorScheme(.dark, for: .navigationBar)
 		}
+		.tint(.white)
 	}
 }
 
