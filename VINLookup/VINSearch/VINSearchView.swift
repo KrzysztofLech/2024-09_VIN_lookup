@@ -20,6 +20,7 @@ public struct VINSearchView: View {
 			VINInputView(
 				vinNumber: $viewModel.vinNumber,
 				isDataDownloading: $viewModel.isDataDownloading,
+				isNumberValid: $viewModel.isNumberValid,
 				searchAction: {
 					viewModel.searchData(completion: searchCompletion)
 				}

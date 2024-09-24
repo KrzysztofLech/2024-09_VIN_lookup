@@ -8,20 +8,29 @@ struct RecentView: View {
 	@Binding var vinNumbers: [String]
 	let onSelectAction: (String) -> Void
 
-    var body: some View {
+	var body: some View {
 		if vinNumbers.isEmpty {
 			Text(AppString.noDataText)
 				.foregroundStyle(Color.theme2)
 		} else {
 			List(vinNumbers, id: \.self) { number in
-				Text(number)
-					.foregroundStyle(Color.theme2)
-					.onTapGesture {
+				Button(
+					action: {
 						onSelectAction(number)
+					},
+					label: {
+						HStack(spacing: 0) {
+							Text(number)
+								.foregroundStyle(Color.theme2)
+							Spacer(minLength: 0)
+						}
 					}
+				)
+				.listRowSeparatorTint(.theme1.opacity(0.5))
 			}
+			.tint(.theme3)
 		}
-    }
+	}
 }
 
 #Preview {

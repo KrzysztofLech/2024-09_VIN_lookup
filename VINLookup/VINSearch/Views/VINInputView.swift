@@ -6,6 +6,7 @@ import SwiftUI
 struct VINInputView: View {
 	@Binding var vinNumber: String
 	@Binding var isDataDownloading: Bool
+	@Binding var isNumberValid: Bool
 	let searchAction: () -> Void
 
 	var body: some View {
@@ -46,7 +47,12 @@ struct VINInputView: View {
 		.autocorrectionDisabled()
 		.keyboardType(.asciiCapable)
 		.onChange(of: vinNumber, { _, newValue in
-			vinNumber = newValue.uppercased()
+			if !isNumberValid {
+				let filtered = newValue.filter { $0.isLetter || $0.isNumber }
+				vinNumber = String(filtered.prefix(17)).uppercased()
+			} else {
+				vinNumber = newValue.uppercased()
+			}
 		})
 
 		.disabled(isDataDownloading)
@@ -74,6 +80,11 @@ struct VINInputView: View {
 		)
 		.cornerRadius(8)
 		.padding(.bottom, 32)
+
+		.disabled(!isNumberValid)
+		.opacity(isNumberValid ? 1 : 0.5)
+
+		.animation(.easeInOut, value: isNumberValid)
 	}
 }
 

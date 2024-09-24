@@ -4,8 +4,12 @@
 import Foundation
 
 final class VINSearchViewModel: ObservableObject {
-	@Published var vinNumber: String = "JH4KA7561PC008269" // ""
+	@Published var vinNumber: String = "" {
+		didSet { validateNumber() }
+	}
+
 	@Published var isDataDownloading: Bool = false
+	@Published var isNumberValid: Bool = false
 	@Published var showNetworkAlert: Bool = false
 	@Published var vinData: VINData?
 
@@ -41,5 +45,9 @@ final class VINSearchViewModel: ObservableObject {
 	func handleSelectedNumber(number: String) {
 		vinData = nil
 		vinNumber = number
+	}
+
+	private func validateNumber() {
+		isNumberValid = vinNumber.count == 17 && vinNumber.range(of: ".*[^a-zA-Z0-9].*", options: .regularExpression) == nil
 	}
 }
