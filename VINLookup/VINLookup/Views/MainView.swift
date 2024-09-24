@@ -19,8 +19,8 @@ struct MainView: View {
 	private var tabView: some View {
 		TabView(selection: $viewModel.selectedTabIndex) {
 			Group {
-				VINSearchView(selectedNumber: $viewModel.vinNumber, searchCompletion: { vinNumber in
-					viewModel.handle(vinNumber: vinNumber)
+				VINSearchView(selectedNumber: $viewModel.selectedNumber, searchCompletion: { vinNumber in
+					viewModel.handleNumber(vinNumber)
 				})
 				.tabItem {
 					Image(systemName: "magnifyingglass")
@@ -49,5 +49,5 @@ struct MainView: View {
 }
 
 #Preview {
-	MainView(viewModel: MainViewModel())
+	MainView(viewModel: MainViewModel(localDataService: LocalDataService()))
 }

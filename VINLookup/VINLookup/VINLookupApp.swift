@@ -8,7 +8,8 @@ struct VINLookupApp: App {
 
     var body: some Scene {
         WindowGroup {
-			let mainViewModel = MainViewModel()
+			let localDataService = LocalDataService()
+			let mainViewModel = MainViewModel(localDataService: localDataService)
             MainView(viewModel: mainViewModel)
 				.preferredColorScheme(.light)
         }

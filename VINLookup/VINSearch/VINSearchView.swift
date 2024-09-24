@@ -21,8 +21,7 @@ public struct VINSearchView: View {
 				vinNumber: $viewModel.vinNumber,
 				isDataDownloading: $viewModel.isDataDownloading,
 				searchAction: {
-					viewModel.searchData()
-					searchCompletion?(viewModel.vinNumber)
+					viewModel.searchData(completion: searchCompletion)
 				}
 			)
 

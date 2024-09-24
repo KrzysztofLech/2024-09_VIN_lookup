@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		6B6B9FD62C9DD1D7007791F1 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6B9FD52C9DD1D7007791F1 /* MainViewModel.swift */; };
+		6B6E357D2CA2872700C3D57C /* LocalDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6E357C2CA2872700C3D57C /* LocalDataService.swift */; };
+		6B6E357F2CA287D700C3D57C /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6E357E2CA287D700C3D57C /* Logger.swift */; };
 		6B7DFC572CA13A8A0072360C /* VINSearch.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B7DFC562CA13A8A0072360C /* VINSearch.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6B7DFC5A2CA13A8A0072360C /* VINSearch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B7DFC542CA13A8A0072360C /* VINSearch.framework */; };
 		6B7DFC5B2CA13A8A0072360C /* VINSearch.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6B7DFC542CA13A8A0072360C /* VINSearch.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -60,6 +62,8 @@
 		6B62935D2C9D618D00D82820 /* VINData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VINData.swift; sourceTree = "<group>"; };
 		6B62935F2C9D65BC00D82820 /* NetworkingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingError.swift; sourceTree = "<group>"; };
 		6B6B9FD52C9DD1D7007791F1 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		6B6E357C2CA2872700C3D57C /* LocalDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataService.swift; sourceTree = "<group>"; };
+		6B6E357E2CA287D700C3D57C /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		6B7DFC542CA13A8A0072360C /* VINSearch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VINSearch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B7DFC562CA13A8A0072360C /* VINSearch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VINSearch.h; sourceTree = "<group>"; };
 		6B7DFC602CA13B200072360C /* VINSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VINSearchView.swift; sourceTree = "<group>"; };
@@ -189,6 +193,8 @@
 		6BE0DB722C9C51C30021E2E5 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				6B6E357C2CA2872700C3D57C /* LocalDataService.swift */,
+				6B6E357E2CA287D700C3D57C /* Logger.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -352,8 +358,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				6BE0DB762C9C52220021E2E5 /* MainView.swift in Sources */,
+				6B6E357D2CA2872700C3D57C /* LocalDataService.swift in Sources */,
 				6BE0DB782C9C52740021E2E5 /* AppString.swift in Sources */,
 				6BE0DB7C2C9C63FB0021E2E5 /* RecentView.swift in Sources */,
+				6B6E357F2CA287D700C3D57C /* Logger.swift in Sources */,
 				6BE0DB632C9C510B0021E2E5 /* VINLookupApp.swift in Sources */,
 				6B6B9FD62C9DD1D7007791F1 /* MainViewModel.swift in Sources */,
 			);

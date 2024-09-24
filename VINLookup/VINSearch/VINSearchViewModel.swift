@@ -16,18 +16,18 @@ final class VINSearchViewModel: ObservableObject {
 	}
 
 	@MainActor
-	func searchData() {
+	func searchData(completion: ((String) -> Void)?) {
 		vinData = nil
 
 		Task {
 			do {
 				isDataDownloading = true
 				vinData = try await remoteDataService.fetchVehicleData(forVIN: vinNumber)
+				completion?(vinNumber)
 				Logger.log(okText: "VIN: \(vinNumber) data downloaded!")
 
 				vinNumber = ""
 				isDataDownloading = false
-
 			} catch {
 				isDataDownloading = false
 				if let error = error as? NetworkingError {

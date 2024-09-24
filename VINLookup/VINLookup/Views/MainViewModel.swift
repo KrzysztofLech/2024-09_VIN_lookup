@@ -5,16 +5,28 @@ import Foundation
 
 final class MainViewModel: ObservableObject {
 
-	@Published var vinNumber: String = "JH4KA7561PC008269" // ""
-	@Published var selectedTabIndex: Int = 0
-	@Published var vinNumbers: [String] = ["JH4KA7561PC008269", "AB4KA7561PC008123"] //[]
+	private var localDataService: LocalDataServiceProtocol
 
-	func handle(vinNumber: String) {
-		vinNumbers.append(vinNumber)
+	@Published var selectedTabIndex: Int = 0
+	@Published var vinNumbers: [String] = []
+	@Published var selectedNumber: String = ""
+
+	init(localDataService: LocalDataServiceProtocol) {
+		self.localDataService = localDataService
+		vinNumbers = localDataService.vinNumbers
+	}
+
+	func handleNumber(_ number: String) {
+		if let index = vinNumbers.firstIndex(of: number) {
+			vinNumbers.remove(at: index)
+		}
+
+		vinNumbers.insert(number, at: 0)
+		localDataService.vinNumbers = vinNumbers
 	}
 
 	func onSelect(number: String) {
-		vinNumber = number
+		selectedNumber = number
 		selectedTabIndex = 0
 	}
 }

@@ -34,7 +34,7 @@ struct VINInputView: View {
 			prompt: Text(VINString.Input.prompt)
 		)
 		.multilineTextAlignment(.center)
-		.font(.system(size: 24))
+		.font(.system(size: 22))
 		.foregroundColor(VINColor.theme2)
 		.tint(VINColor.theme2)
 
