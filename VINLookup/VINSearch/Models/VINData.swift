@@ -13,7 +13,17 @@ struct VINData: Decodable {
 	let wmi: String
 	let vds: String
 	let vis: String
-	let year: Int
+	private let year: Int?
+}
+
+extension VINData {
+	var yearString: String {
+		if let year {
+			return String(year)
+		} else {
+			return "no data"
+		}
+	}
 }
 
 extension VINData {

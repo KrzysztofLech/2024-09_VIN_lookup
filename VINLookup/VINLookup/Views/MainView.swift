@@ -1,6 +1,7 @@
 //  MainView.swift
 //  Created by Krzysztof Lech on 19/09/2024.
 
+import PhotosUI
 import SwiftUI
 import VINSearch
 
@@ -9,11 +10,38 @@ struct MainView: View {
 	@ObservedObject var viewModel: MainViewModel
 
 	var body: some View {
-		NavigationView {
-			tabView
-				.navigationBarTitleDisplayMode(.inline)
-				.navigationTitle(AppString.mainViewTitle)
+		ZStack {
+			NavigationView {
+				tabView
+					.navigationBarTitleDisplayMode(.inline)
+					.navigationTitle(AppString.mainViewTitle)
+
+					.toolbar {
+						ToolbarItem(placement: .topBarTrailing) {
+							Button(
+								action: viewModel.showCameraPicker,
+								label: {
+									Image(systemName: "barcode.viewfinder")
+								}
+							)
+						}
+					}
+
+			}
+
+			if viewModel.isRecognising {
+				TextRecognitionView(viewModel: viewModel)
+					.animation(.easeInOut, value: viewModel.isRecognising)
+			}
 		}
+		.fullScreenCover(
+			isPresented: $viewModel.isCameraPickerPresented,
+			onDismiss: viewModel.startTextRecognition,
+			content: {
+				CameraPicker(photo: $viewModel.cameraPickerSelectedPhoto)
+					.ignoresSafeArea()
+			}
+		)
 	}
 
 	private var tabView: some View {
@@ -50,5 +78,5 @@ struct MainView: View {
 }
 
 #Preview {
-	MainView(viewModel: MainViewModel(localDataService: LocalDataService()))
+	MainView(viewModel: MainViewModel(localDataService: LocalDataService(), textRecognitionService: TextRecognitionService()))
 }

@@ -37,7 +37,7 @@ struct VINDataView: View {
 					dataTextView(title: "WMI:", text: data.wmi)
 					dataTextView(title: "VDS:", text: data.vds)
 					dataTextView(title: "VIS:", text: data.vis)
-					dataTextView(title: "Year:", text: String(data.year))
+					dataTextView(title: "Year:", text: data.yearString)
 				}
 				.padding(16)
 			}
