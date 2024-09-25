@@ -15,6 +15,12 @@ enum VINString {
 		static let buttonTitle = "OK"
 	}
 
+	enum LimitReached {
+		static let title = "The request rate limit has been reached!"
+		static let message = "Try again in a minute"
+		static let buttonTitle = "OK"
+	}
+
 	enum Data {
 		static let premiumDataPrefix = "Only"
 		static let premiumTitle = "PREMIUM"

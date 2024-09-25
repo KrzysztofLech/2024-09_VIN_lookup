@@ -1,3 +1,1 @@
-Due to lack of time, the handling of the limit of 10 requests per minute was not completed.
-
-Instead, an additional way of entering the VIN number was implemented: TEXT RECOGNITION FROM THE PHOTO.
+TEXT RECOGNITION FROM PHOTO has been implemented as an additional method of entering the VIN number (top right button on the navigation bar).

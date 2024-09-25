@@ -37,10 +37,11 @@ public struct VINSearchView: View {
 
 		.ignoresSafeArea(.keyboard, edges: .bottom)
 
-		.alert(isPresented: $viewModel.showNetworkAlert) {
-			Alert(title: Text(VINString.APIproblem.title),
-				  message: Text(VINString.APIproblem.message),
-				  dismissButton: .default(Text(VINString.APIproblem.buttonTitle))
+		.alert(isPresented: $viewModel.showAlert) {
+			Alert(
+				title: Text(viewModel.alertType.title),
+				message: Text(viewModel.alertType.message),
+				dismissButton: .default(Text(viewModel.alertType.buttonTitle))
 			)
 		}
 

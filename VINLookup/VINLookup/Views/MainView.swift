@@ -26,7 +26,6 @@ struct MainView: View {
 							)
 						}
 					}
-
 			}
 
 			if viewModel.isRecognising {
