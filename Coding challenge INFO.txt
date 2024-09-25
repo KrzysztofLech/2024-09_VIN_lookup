@@ -1,0 +1,3 @@
+Due to lack of time, the handling of the limit of 10 requests per minute was not completed.
+
+Instead, an additional way of entering the VIN number was implemented: TEXT RECOGNITION FROM THE PHOTO.
