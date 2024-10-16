@@ -16,7 +16,7 @@ protocol RemoteDataServiceProtocol {
 
 final class RemoteDataService: RemoteDataServiceProtocol {
 	private let session: URLSessionProtocol
-	private let apiKey = "j1cotrZRdNwKls1HS5z9wA==f6dzxqIggVWtTDyn"
+	private let apiKey = "apiKey"
 	private let apiUrlString = "https://api.api-ninjas.com/v1/vinlookup"
 
 	init(session: URLSessionProtocol = URLSession.shared) {
